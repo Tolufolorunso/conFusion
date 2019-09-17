@@ -1,12 +1,103 @@
 <div class="container" fxLayout="column" fxLayoutGap="10px">
-  <mat-list fxFlex>
-    <mat-list-item *ngFor="let dish of dishes">
-      <!-- <mat-icon></mat-icon> -->
-      <img matListAvatar src="{{dish.image}}" alt="{{dish.name}}">
-      <h1 matLine>{{dish.name}}</h1>
-      <p matLine>
-        <span>{{dish.description}}</span>
-      </p>
-    </mat-list-item>
-  </mat-list>
+
+  <div fxFlex>
+    <div>
+      <h3>Menu</h3>
+      <hr>
+    </div>
+  </div>
+  <div fxFlex>
+    <mat-grid-list cols="2" rowHeight="200px">
+      <mat-grid-tile *ngFor="let dish of dishes">
+        <!-- <mat-icon></mat-icon> -->
+        <img height="200px" src="{{dish.image}}" alt="{{dish.name}}">
+        <mat-grid-tile-footer>
+          <h1 matLine>{{dish.name | uppercase}}</h1>
+        </mat-grid-tile-footer>
+        <!-- <p matLine>
+          <span>{{dish.description}}</span>
+        </p> -->
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+
+  <div fxFlex *ngIf="selectedDish">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <h3>{{selectedDish.name | uppercase}}</h3>
+        </mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="{{selectedDish.image}}" alt=" {{selectedDish.name}}">
+      <mat-card-content>
+        <p>
+          {{selectedDish.description}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
 </div>
+
+
+<!-- const DISH = {
+id: '0',
+name: 'Uthappizza',
+image: '/assets/images/uthappizza.png',
+category: 'mains',
+featured: true,
+label: 'Hot',
+price: '4.99',
+// tslint:disable-next-line:max-line-length
+description: 'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.',
+comments: [
+{
+rating: 5,
+comment: 'Imagine all the eatables, living in conFusion!',
+author: 'John Lemon',
+date: '2012-10-16T17:57:28.556094Z'
+},
+{
+rating: 4,
+comment: 'Sends anyone to heaven, I wish I could get my mother-in-law to eat it!',
+author: 'Paul McVites',
+date: '2014-09-05T17:57:28.556094Z'
+},
+{
+rating: 3,
+comment: 'Eat it, just eat it!',
+author: 'Michael Jaikishan',
+date: '2015-02-13T17:57:28.556094Z'
+},
+{
+rating: 4,
+comment: 'Ultimate, Reaching for the stars!',
+author: 'Ringo Starry',
+date: '2013-12-02T17:57:28.556094Z'
+},
+{
+rating: 2,
+comment: 'It\'s your birthday, we\'re gonna party!',
+author: '25 Cent',
+date: '2011-12-02T17:57:28.556094Z'
+}
+]
+}; -->
+
+
+
+<!-- <div class="container" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.gt-md="space-around center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+
+  <div fxFlex="40">
+    <p>Display the details of the Dish here</p>
+  </div>
+
+  <div fxFlex="40">
+    <p>Display the list of comments here</p>
+  </div>
+
+</div> -->
